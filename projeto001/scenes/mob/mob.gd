@@ -60,7 +60,7 @@ func movimentar(delta):
 	move_and_slide()
 
 func pode_atacar(delta)->bool: # funcção que verifica se ataca ou não e se atacar qual atq vai usar
-	var distancia=global_position.distance_to(Comum.player.position) # pega a distancia até o player
+	var distancia=global_position.distance_to(Comum.player.global_position) # pega a distancia até o player
 	if estrutura.ataque.distancia_minima >= distancia: # se for maior ou igual a menor distancia, infringe ataque proximo
 		if estrutura.ataque.tempo.atual == 0:
 			ataque_proximo(delta) #cria o ataquel proximo
