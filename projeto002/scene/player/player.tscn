@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr1eq47t0tqj5"]
+
+[ext_resource type="Script" uid="uid://pt6ikqbnx3hx" path="res://scene/player/player.gd" id="1_cm2cf"]
+[ext_resource type="Texture2D" uid="uid://djmvyfv1nge0g" path="res://assets/img/naves.png" id="1_v7pse"]
+[ext_resource type="Texture2D" uid="uid://b8jh1g8v40pl7" path="res://assets/img/bar.png" id="3_6smn3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6smn3"]
+radius = 23.5
+height = 53.0
+
+[sub_resource type="FontFile" id="FontFile_cm2cf"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_6smn3"]
+font = SubResource("FontFile_cm2cf")
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_cm2cf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_v7pse")
+region_enabled = true
+region_rect = Rect2(384, 312, 128, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("CapsuleShape2D_6smn3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 20.0
+offset_right = 45.0
+offset_bottom = 43.0
+text = "Destino:"
+label_settings = SubResource("LabelSettings_6smn3")
+
+[node name="blindagem" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 4.0
+offset_top = 46.0
+offset_right = 146.0
+offset_bottom = 62.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_6smn3")
+texture_progress = ExtResource("3_6smn3")
+tint_under = Color(0.184314, 0.196078, 0.054902, 1)
+tint_progress = Color(0.0719127, 0.188502, 0.490748, 1)

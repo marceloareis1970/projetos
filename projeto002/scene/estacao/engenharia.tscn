@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://c251vw2mx2xwu"]
+
+[ext_resource type="Script" uid="uid://cc3tc1svheght" path="res://scene/estacao/engenharia.gd" id="1_285el"]
+[ext_resource type="Texture2D" uid="uid://c7uw7lnfw3i1y" path="res://assets/img/estacao.png" id="2_nycki"]
+[ext_resource type="Texture2D" uid="uid://drqqf20bounu8" path="res://assets/img/engenharia.png" id="3_jlyuo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usj25"]
+size = Vector2(97, 96)
+
+[node name="engenharia" type="Node2D"]
+script = ExtResource("1_285el")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nycki")
+region_enabled = true
+region_rect = Rect2(96, 96, 97, 95)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_jlyuo")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_usj25")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = 19.0
+offset_right = 114.0
+offset_bottom = 122.0
+grow_horizontal = 2
+color = Color(0.184314, 0.196078, 0.054902, 1)
+
+[node name="Label" type="Label" parent="UI/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 2.0
+offset_right = 0.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Engenharia
+Pressione  F"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

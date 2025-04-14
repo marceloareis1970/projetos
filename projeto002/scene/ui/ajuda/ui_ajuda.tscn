@@ -1,0 +1,111 @@
+[gd_scene load_steps=2 format=3 uid="uid://xwgrkp1y5slt"]
+
+[ext_resource type="Script" uid="uid://0nirwmw6nv2v" path="res://scene/ui/ajuda/ui_ajuda.gd" id="1_behym"]
+
+[node name="UI_ajuda" type="CanvasLayer"]
+script = ExtResource("1_behym")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = -146.0
+offset_right = 243.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_right = 477.0
+offset_bottom = 40.0
+
+[node name="c1" type="ColorRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+color = Color(0.184314, 0.196078, 0.054902, 1)
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/c1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ajuda"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer/c1"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -15.0
+offset_right = -8.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "X"
+
+[node name="c2" type="ColorRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+color = Color(0.184314, 0.196078, 0.054902, 0.407843)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/VBoxContainer/c2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer/c2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b][color=#AFA0A0]Galactic Trade Routes – A Saga Espacial de Comércio e Conspiração[/color][/b]
+
+Em um futuro distante, onde civilizações se espalharam por constelações inteiras, 
+Galactic Trade Routes tornou-se a espinha dorsal da economia intergaláctica. Mercadores, pilotos e magnatas 
+competem para conquistar riquezas, negociando desde minerais raros até exóticas criaturas alienígenas.
+Você é [color=red][b]Orion Vex[/b][/color], um comerciante ambicioso que acaba de adquirir sua primeira 
+nave cargueira, a [color=red][b]Nebula Runner[/b][/color]. O objetivo parece simples: viajar entre estações espaciais, comprar produtos valiosos e vendê-los por um preço exorbitante em outros sistemas.
+Mas o cosmos esconde perigos além da mera negociação…
+
+[b][color=red]Dentro da estação:[/color][/b]
+	[b]W[/b] - anda para frente
+	[b]S[/b] - anda para trás
+	[b]SETA DO MOUSE[/b] - indica a direção
+	
+	Exitem espalhados pela estação alguns totens ao chão, que ao passar por cime dele, você pode ativar-lo.
+	Os totens:
+		[b]Engenharia[/b] - permite você consertar alguns dos itens e, futuramente, comprar novos itens para sua nave
+		[b]Jorna[/b]l - permite você saber de tudo que está disponível no espaço e também, comparam eles com o atual
+		[b]Comércio[/b] - permite você comprar ou vender algo encontrado em sua bag
+		[b]Serviços comunitários[/b] - São serviços que são dados a você toda vez que você morre e tem o CASH abaixo do total para consertar sua nave
+		[b]Hangar[/b] - permite você voltar para sua nave. Você tem que ter um destino e sua nave ter blindagem acima de zero
+		
+	Definir destino:
+	Você pode definir seu destino apenas pressinonando M e teremos todos os planetas com suas estações na tela. Clique na que deseja ir
+	
+[b][color=red]No Espaço:[/color][/b]
+	[b][A,S,D,W][/b] - movimentam a nava
+	[b][LEFT BUTTON MOUSE][/b] - atira
+	* Os tiros somente são dados quando temos inimigos na tela.
+	
+	Os inimigos dropam itens que você deve passar por cima para pegar o mesmo."
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/c1/Button" to="." method="_on_button_pressed"]
