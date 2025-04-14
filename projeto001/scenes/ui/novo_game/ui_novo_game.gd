@@ -9,7 +9,7 @@ var tipo_plyers= [
 			"atributos":{"hp":{"atual":100,"maximo":100},"mp":{"atual":0,"maximo":0},"defesa":{"atual":23,"maximo":100}},
 			"atalhos":{"q":{},"w":{"id":"s_spear-001","damage":50,"speed":50,"deltatempo":{"atual":0,"maximo":0.5}},"e":{},"r":{},"t":{}},
 			"cash":0,
-			"bag":{"tamanho":10,"itens":[{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},]},
+			"bag":{"tamanho":10,"itens":[{"id":"m_hp-mob-001","qtd":10},{"id":"m_agua-001","qtd":20},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},{"id":"","qtd":0},]},
 			"armas":[ {"id":"s_spear-001","type":"spear"},],
 			"repositorio_skill":[{"id":"s_spear-001","damage":50,"speed":50,"deltatempo":{"atual":0,"maximo":0.5},"type":"spear"},{"id":"s_spear-002","damage":50,"speed":50,"deltatempo":{"atual":0,"maximo":0.5},"distancia":0.5,"type":"spear"},],
 			"mover":true,"pode_atirar":true,

@@ -17,8 +17,8 @@ var eu={
 	"bag":{
 		"tamanho":10,
 		"itens":[
-			{"id":"","qtd":0},
-			{"id":"","qtd":0},
+			{"id":"m_hp-mob-001","qtd":10},
+			{"id":"m_agua-001","qtd":20},
 			{"id":"","qtd":0},
 			{"id":"","qtd":0},
 			{"id":"","qtd":0},
