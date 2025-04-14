@@ -1,0 +1,121 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy3xbiurw6vu3"]
+
+[ext_resource type="Script" uid="uid://dchusoq7dlnu5" path="res://scenes/ui/novo_game/ui_novo_game.gd" id="1_mxy6t"]
+[ext_resource type="FontFile" uid="uid://cyw0u4okwvgw8" path="res://assets/fonts/OldLondon.ttf" id="2_fd6g0"]
+[ext_resource type="Texture2D" uid="uid://bunw4hi18wayd" path="res://assets/img/icon_check.png" id="3_1466t"]
+[ext_resource type="Texture2D" uid="uid://b6v600wlkgl18" path="res://assets/img/icon_close.png" id="3_fd6g0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ciwd6"]
+font = ExtResource("2_fd6g0")
+font_size = 50
+
+[node name="UI_novo_game" type="CanvasLayer"]
+script = ExtResource("1_mxy6t")
+
+[node name="n" type="NinePatchRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="n"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.113665, 0.113665, 0.113665, 0.439216)
+
+[node name="p_titulo" type="Panel" parent="n"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 61.0
+offset_right = -1.0
+offset_bottom = 132.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="n/p_titulo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Escolha uma classe"
+label_settings = SubResource("LabelSettings_ciwd6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="n/p_titulo"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -19.0
+offset_right = -16.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("3_fd6g0")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="s" type="ScrollContainer" parent="n"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 150.0
+offset_right = 1109.0
+offset_bottom = 600.0
+
+[node name="v" type="VBoxContainer" parent="n/s"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="p" type="Panel" parent="n/s/v"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="t" type="TextureRect" parent="n/s/v/p"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 31.0
+offset_right = 160.0
+offset_bottom = 170.0
+expand_mode = 1
+
+[node name="l" type="RichTextLabel" parent="n/s/v/p"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 26.0
+offset_right = 883.0
+offset_bottom = 159.0
+bbcode_enabled = true
+
+[node name="bt" type="TextureButton" parent="n/s/v/p"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -67.0
+offset_right = -23.0
+offset_bottom = 69.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_1466t")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="n/p_titulo/TextureButton" to="." method="_on_texture_button_pressed"]

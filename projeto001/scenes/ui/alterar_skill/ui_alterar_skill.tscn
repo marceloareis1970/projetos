@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyf6t2f56t7ln"]
+
+[ext_resource type="Script" uid="uid://d1fisdmxw8jmh" path="res://scenes/ui/alterar_skill/ui_alterar_skill.gd" id="1_6deow"]
+[ext_resource type="Texture2D" uid="uid://c2nr558gqbehq" path="res://assets/img/troca_skills.png" id="2_myg3p"]
+[ext_resource type="Texture2D" uid="uid://disatnhhglrwx" path="res://assets/img/cell-inventory.png" id="3_myg3p"]
+[ext_resource type="Texture2D" uid="uid://b6v600wlkgl18" path="res://assets/img/icon_close.png" id="3_w8mfw"]
+[ext_resource type="Texture2D" uid="uid://bunw4hi18wayd" path="res://assets/img/icon_check.png" id="4_6deow"]
+
+[node name="UI_alterar_skill" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_6deow")
+
+[node name="n" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = -294.0
+offset_right = 345.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+texture = ExtResource("2_myg3p")
+region_rect = Rect2(0, 0, 450, 183.5)
+
+[node name="h" type="HBoxContainer" parent="n"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="p" type="Panel" parent="n/h"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="l" type="Label" parent="n/h/p"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Habilidades"
+horizontal_alignment = 1
+
+[node name="Button" type="TextureButton" parent="n/h/p"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("3_w8mfw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="s" type="ScrollContainer" parent="n"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 54.0
+offset_right = 641.0
+offset_bottom = 501.0
+
+[node name="v" type="VBoxContainer" parent="n/s"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="p0" type="Panel" parent="n/s/v"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="bg" type="TextureRect" parent="n/s/v/p0"]
+layout_mode = 0
+offset_right = 81.0
+offset_bottom = 73.0
+texture = ExtResource("3_myg3p")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="n/s/v/p0/bg"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 75.0
+offset_bottom = 68.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+
+[node name="bt" type="TextureButton" parent="n/s/v/p0"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("4_6deow")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="n/s/v/p0"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 9.0
+offset_right = 550.0
+offset_bottom = 65.0
+bbcode_enabled = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="n/h/p/Button" to="." method="_on_button_pressed"]

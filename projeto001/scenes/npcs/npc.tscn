@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://t2p8iw6e83br"]
+
+[ext_resource type="Script" uid="uid://bdvhxiga6w5q5" path="res://scenes/npcs/npc.gd" id="1_ivh6b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m5fb5"]
+
+[sub_resource type="FontFile" id="FontFile_ivh6b"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ivh6b"]
+radius = 1.90971
+
+[node name="npc" type="CharacterBody3D"]
+script = ExtResource("1_ivh6b")
+
+[node name="personagem" type="Node3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.869547, -0.112756)
+shape = SubResource("CapsuleShape3D_m5fb5")
+
+[node name="trabalho" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78543, 0)
+billboard = 1
+text = "teste"
+font = SubResource("FontFile_ivh6b")
+font_size = 50
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0561764, 0)
+shape = SubResource("SphereShape3D_ivh6b")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 27.0
+offset_right = 75.0
+offset_bottom = 67.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="item" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

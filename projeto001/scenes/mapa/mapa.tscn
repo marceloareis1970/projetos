@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjoitcq2qdpoe"]
+
+[ext_resource type="Script" uid="uid://di7vxffw7oqgk" path="res://scenes/mapa/mapa.gd" id="1_p106v"]
+[ext_resource type="PackedScene" uid="uid://dbouhar7svyck" path="res://scenes/player/no_player.tscn" id="1_pg520"]
+[ext_resource type="PackedScene" uid="uid://2kfy0jbq5ahv" path="res://scenes/mapa/regiao_001.tscn" id="2_24wre"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pg520"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_v373u"]
+sky_material = SubResource("ProceduralSkyMaterial_pg520")
+
+[sub_resource type="Environment" id="Environment_p106v"]
+background_mode = 2
+sky = SubResource("Sky_v373u")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="mapa" type="Node3D"]
+script = ExtResource("1_p106v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p106v")
+
+[node name="mapa" type="Node3D" parent="."]
+
+[node name="regiao_001" parent="mapa" instance=ExtResource("2_24wre")]
+
+[node name="player" type="Node" parent="."]
+
+[node name="no_player" parent="player" instance=ExtResource("1_pg520")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890218, 0)
+
+[node name="tiros" type="Node" parent="."]
+
+[node name="inimigos" type="Node" parent="."]
+
+[node name="marca" type="Node" parent="."]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://vyhwqushjci3"]
+
+[ext_resource type="Script" uid="uid://bksu0aogdeatu" path="res://scenes/fabricacao_itens/fabricacao_itens.gd" id="1_ftl0n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txiv4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a7m1i"]
+
+[sub_resource type="FontFile" id="FontFile_t7yn2"]
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_01qd5"]
+radius = 1.50479
+
+[sub_resource type="FontFile" id="FontFile_ftl0n"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7m1i"]
+font = SubResource("FontFile_ftl0n")
+
+[node name="fabricacao_itens" type="CharacterBody3D"]
+script = ExtResource("1_ftl0n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_txiv4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_a7m1i")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905983, 0)
+billboard = 2
+text = "Mesa de montagem"
+font = SubResource("FontFile_t7yn2")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_01qd5")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Pressione a Letra 
+R"
+label_settings = SubResource("LabelSettings_a7m1i")
+horizontal_alignment = 1
+uppercase = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

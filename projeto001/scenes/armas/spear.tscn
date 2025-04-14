@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b38fq33jkiflr"]
+
+[ext_resource type="Script" uid="uid://0dc7hbwd41d" path="res://scenes/armas/spear.gd" id="1_8tgpu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aj56x"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4uu24"]
+height = 7.11401
+radius = 0.134766
+
+[node name="spear" type="Node3D"]
+script = ExtResource("1_8tgpu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.010056, 0.997797, 0, -3.40931, 0.00294306, 0, 0, -3.4)
+mesh = SubResource("CylinderMesh_aj56x")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.00294955, 0.999996, 0, -0.999996, 0.00294955, 0, -4.35663e-05, 0.0147704)
+shape = SubResource("CylinderShape3D_4uu24")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

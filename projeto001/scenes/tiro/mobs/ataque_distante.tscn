@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://chdn10ovw1pgy"]
+
+[ext_resource type="Script" uid="uid://dffpntg6vuu61" path="res://scenes/tiro/mobs/ataque_distante.gd" id="1_q0fkc"]
+[ext_resource type="AudioStream" uid="uid://hpch5ytcoss" path="res://assets/audio/hitHurt_distancia.wav" id="2_7s8lq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y5yd5"]
+radius = 0.10763
+
+[sub_resource type="SphereMesh" id="SphereMesh_q0fkc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7s8lq"]
+radius = 0.373692
+
+[node name="ataque_distante" type="CharacterBody3D"]
+script = ExtResource("1_q0fkc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+editor_description = "área do artefato de ataque"
+shape = SubResource("SphereShape3D_y5yd5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+editor_description = "artefato"
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+layers = 2
+mesh = SubResource("SphereMesh_q0fkc")
+
+[node name="Area3D" type="Area3D" parent="."]
+editor_description = "detecta se pegou ou não no player"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_7s8lq")
+
+[node name="som" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_7s8lq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

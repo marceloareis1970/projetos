@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsyfixkevq6dr"]
+
+[ext_resource type="Script" uid="uid://28eah5pjsqrl" path="res://scenes/mob/mob.gd" id="1_a071u"]
+[ext_resource type="AudioStream" uid="uid://cfnhhhnn1kman" path="res://assets/audio/hitHurt.wav" id="2_nnm6l"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_a071u"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nnm6l"]
+radius = 1.0
+height = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w5ba3"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oydm2"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_feath"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a071u"]
+radius = 1.54089
+height = 3.08178
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a071u"]
+points = PackedVector3Array(0, -1, -4.5, -0.441367, -1, -4.47886, 0, -0.600039, -3.60053, 0.440485, -1, -4.47886, -0.878328, -1, -4.41366, -0.265172, -0.200078, -2.68784, 0, 0.199883, -1.8007, 0.264291, -0.200078, -2.68784, 0.877447, -1, -4.41366, -0.523297, 0.199883, -1.72318, 0, 1, 0, -1.30648, -1, -4.30707, 0.522416, 0.199883, -1.72318, 1.3056, -1, -4.30707, -1.7223, -1, -4.15818, -1.69763, -0.600039, -3.17502, -0.849256, 0.199883, -1.58751, -0.500391, 0.599843, -0.748825, -0.57175, 0.599843, -0.695967, -0.636942, 0.599843, -0.636942, -0.695967, 0.599843, -0.57175, -0.748825, 0.599843, -0.500391, -1.58751, 0.199883, -0.849256, -3.17502, -0.600039, -1.69763, -4.15818, -1, -1.7223, -1.72318, 0.199883, -0.523297, -4.41366, -1, -0.878328, -2.68784, -0.200078, -0.265172, -1.8007, 0.199883, 0, -2.68784, -0.200078, 0.264291, -4.41366, -1, 0.877447, -1.72318, 0.199883, 0.522416, -4.15818, -1, 1.72142, -3.17502, -0.600039, 1.69675, -3.74236, -1, 2.49931, -2.0879, -0.200078, 1.71261, -1.90995, -0.200078, 1.90906, -1.71349, -0.200078, 2.08702, -2.5002, -1, 3.74148, -1.69763, -0.600039, 3.17414, -2.12138, -1, 3.96789, -1.7223, -1, 4.1573, -1.30648, -1, 4.30619, -0.878328, -1, 4.41278, -0.265172, -0.200078, 2.68696, 0, -1, 4.5, 0.440485, -1, 4.47798, 0.877447, -1, 4.41278, 1.3056, -1, 4.30619, 1.72142, -1, 4.1573, 2.1205, -1, 3.96789, 2.49931, -1, 3.74148, 2.85435, -1, 3.47807, 1.90906, -0.200078, 1.90906, 3.47807, -1, 2.85435, 3.74148, -1, 2.49931, 3.96789, -1, 2.1205, 4.1573, -1, 1.72142, 4.30619, -1, 1.3056, 4.41278, -1, 0.877447, 4.47798, -1, 0.440485, 4.5, -1, 0, 2.68696, -0.200078, -0.265172, 4.41278, -1, -0.878328, 4.30619, -1, -1.30648, 4.1573, -1, -1.7223, 3.96789, -1, -2.12138, 3.17414, -0.600039, -1.69763, 3.74148, -1, -2.5002, 2.08702, -0.200078, -1.71349, 1.90906, -0.200078, -1.90995, 1.71261, -0.200078, -2.0879, 2.49931, -1, -3.74236, 1.69675, -0.600039, -3.17502, 1.72142, -1, -4.15818, -2.12138, -1, -3.96877, -2.5002, -1, -3.74236, -1.71349, -0.200078, -2.0879, -1.90995, -0.200078, -1.90995, -2.0879, -0.200078, -1.71349, -3.74236, -1, -2.5002, -3.96877, -1, -2.12138, -4.30707, -1, -1.30648, -4.47886, -1, -0.441367, -3.60053, -0.600039, 0, -4.47886, -1, 0.440485, -4.30707, -1, 1.3056, -3.96877, -1, 2.1205, -3.47895, -1, 2.85435, -3.18207, -1, 3.18119, -2.85523, -1, 3.47807, -0.441367, -1, 4.47798, 3.18119, -1, 3.18119, 4.47798, -1, -0.441367, 3.47807, -1, -2.85523, 3.18119, -1, -3.18207, 2.85435, -1, -3.47895, 2.1205, -1, -3.96877, -2.85523, -1, -3.47895, -3.18207, -1, -3.18207, -3.47895, -1, -2.85523, -4.5, -1, 0)
+
+[node name="mob" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_a071u")
+
+[node name="bicho" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bicho"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.869815, 0, 0)
+mesh = SubResource("SphereMesh_a071u")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="bicho"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.518992, 0, 0)
+mesh = SubResource("SphereMesh_nnm6l")
+
+[node name="Marker3D" type="Marker3D" parent="bicho"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 2.03155, 0, 2.71386e-08)
+
+[node name="pernas" type="Node3D" parent="bicho"]
+
+[node name="PL1" type="MeshInstance3D" parent="bicho/pernas"]
+transform = Transform3D(0.975138, -0.0832301, -0.135171, 0, 0.301409, -0.7601, 0.2216, 0.36625, 0.594814, -1.24311, -0.242782, 1.10004)
+mesh = SubResource("CylinderMesh_w5ba3")
+
+[node name="PL1" type="MeshInstance3D" parent="bicho/pernas/PL1"]
+transform = Transform3D(-0.975138, 0.172829, -0.138695, 0, -0.625883, -0.779917, -0.221599, -0.760527, 0.610322, -0.14268, 1.55473, 0.754044)
+mesh = SubResource("CylinderMesh_oydm2")
+
+[node name="PL2" type="MeshInstance3D" parent="bicho/pernas"]
+transform = Transform3D(1, 0, 0, 0, 0.301409, -0.7601, 0, 0.375588, 0.609979, -0.847764, -0.242782, 1.10004)
+mesh = SubResource("CylinderMesh_w5ba3")
+
+[node name="PL1" type="MeshInstance3D" parent="bicho/pernas/PL2"]
+transform = Transform3D(-0.975138, 0.172829, -0.138695, 0, -0.625883, -0.779917, -0.221599, -0.760527, 0.610322, -0.14268, 1.55473, 0.754044)
+mesh = SubResource("CylinderMesh_feath")
+
+[node name="PL3" type="MeshInstance3D" parent="bicho/pernas"]
+transform = Transform3D(0.965126, 0.0983232, 0.159683, 0, 0.301409, -0.7601, -0.261785, 0.36249, 0.588707, -0.3176, -0.242782, 1.10004)
+mesh = SubResource("CylinderMesh_w5ba3")
+
+[node name="PL1" type="MeshInstance3D" parent="bicho/pernas/PL3"]
+transform = Transform3D(-0.975138, 0.172829, -0.138695, 0, -0.625883, -0.779917, -0.221599, -0.760527, 0.610322, -0.14268, 1.55473, 0.754044)
+mesh = SubResource("CylinderMesh_feath")
+
+[node name="PL4" type="MeshInstance3D" parent="bicho/pernas"]
+transform = Transform3D(0.852996, 0.196026, 0.318359, 0, 0.301409, -0.7601, -0.521918, 0.320375, 0.520309, 0.246, -0.243, 1.1)
+mesh = SubResource("CylinderMesh_w5ba3")
+
+[node name="PL1" type="MeshInstance3D" parent="bicho/pernas/PL4"]
+transform = Transform3D(-0.975138, 0.172829, -0.138695, 0, -0.625883, -0.779917, -0.221599, -0.760527, 0.610322, -0.14268, 1.55473, 0.754044)
+mesh = SubResource("CylinderMesh_feath")
+
+[node name="PR5" type="MeshInstance3D" parent="bicho/pernas"]
+transform = Transform3D(-0.869495, 0.185641, 0.300986, 0, 0.301101, -0.7606, -0.493942, -0.326787, -0.529831, 0.0719838, -0.243, -1.1)
+mesh = SubResource("CylinderMesh_w5ba3")
+
+[node name="PR1" type="MeshInstance3D" parent="bicho/pernas/PR5"]
+transform = Transform3D(-0.975138, 0.172829, -0.138695, 0, -0.625883, -0.779917, -0.221599, -0.760527, 0.610322, -0.14268, 1.55473, 0.754044)
+mesh = SubResource("CylinderMesh_oydm2")
+
+[node name="PR6" type="MeshInstance3D" parent="bicho/pernas"]
+transform = Transform3D(-0.993272, 0.0434946, 0.070638, 1.44971e-08, 0.301409, -0.7601, -0.115804, -0.373061, -0.605875, -0.502447, -0.243, -1.1)
+mesh = SubResource("CylinderMesh_w5ba3")
+
+[node name="PR1" type="MeshInstance3D" parent="bicho/pernas/PR6"]
+transform = Transform3D(-0.975138, 0.172829, -0.138695, 0, -0.625883, -0.779917, -0.221599, -0.760527, 0.610322, -0.14268, 1.55473, 0.754044)
+mesh = SubResource("CylinderMesh_feath")
+
+[node name="PR7" type="MeshInstance3D" parent="bicho/pernas"]
+transform = Transform3D(-0.965391, -0.0979562, -0.159087, -4.31895e-09, 0.301409, -0.7601, 0.260808, -0.362589, -0.588868, -1.05064, -0.243, -1.1)
+mesh = SubResource("CylinderMesh_w5ba3")
+
+[node name="PR1" type="MeshInstance3D" parent="bicho/pernas/PR7"]
+transform = Transform3D(-0.975138, 0.172829, -0.138695, 0, -0.625883, -0.779917, -0.221599, -0.760527, 0.610322, -0.14268, 1.55473, 0.754044)
+mesh = SubResource("CylinderMesh_feath")
+
+[node name="PR8" type="MeshInstance3D" parent="bicho/pernas"]
+transform = Transform3D(-0.823473, -0.213092, -0.346075, 1.36311e-08, 0.301409, -0.7601, 0.567355, -0.309286, -0.502301, -1.33154, -0.243, -1.1)
+mesh = SubResource("CylinderMesh_w5ba3")
+
+[node name="PR1" type="MeshInstance3D" parent="bicho/pernas/PR8"]
+transform = Transform3D(-0.975138, 0.172829, -0.138695, 0, -0.625883, -0.779917, -0.221599, -0.760527, 0.610322, -0.14268, 1.55473, 0.754044)
+mesh = SubResource("CylinderMesh_feath")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0836778, 0.996493, 0, -0.996493, -0.0836778, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("CapsuleShape3D_a071u")
+
+[node name="pode_atacar" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pode_atacar"]
+transform = Transform3D(3, 0, 0, 0, -0.748411, -0.99393, 0, 6.76171, -0.110012, 0, 0.630489, -7.84098)
+shape = SubResource("ConvexPolygonShape3D_a071u")
+
+[node name="Timer" type="Timer" parent="."]
+editor_description = "Este item é para ser ativando quando ele morre, ativamos eles e quando finalizar, removemo ele da tela"
+wait_time = 5.0
+
+[node name="som_perto" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_nnm6l")
+
+[connection signal="body_entered" from="pode_atacar" to="." method="_on_pode_atacar_body_entered"]
+[connection signal="body_exited" from="pode_atacar" to="." method="_on_pode_atacar_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4nmg37nvc4hy"]
+
+[ext_resource type="Script" uid="uid://cfqqxpbh52vwe" path="res://scenes/marca/marca.gd" id="1_imbwd"]
+[ext_resource type="Texture2D" uid="uid://d6joef86eni3" path="res://assets/img/target.png" id="2_7fjyc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fn75"]
+transparency = 1
+albedo_texture = ExtResource("2_7fjyc")
+emission_enabled = true
+emission = Color(0.0405897, 0.110373, 0.0779558, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4asom"]
+material = SubResource("StandardMaterial3D_1fn75")
+
+[node name="marca" type="Node3D"]
+script = ExtResource("1_imbwd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_4asom")

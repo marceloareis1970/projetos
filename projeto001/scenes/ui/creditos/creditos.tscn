@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdb17f01v8r4a"]
+
+[ext_resource type="Script" uid="uid://dv0h86oghqg6x" path="res://scenes/ui/creditos/creditos.gd" id="1_roc4m"]
+[ext_resource type="Texture2D" uid="uid://b6v600wlkgl18" path="res://assets/img/icon_close.png" id="2_1jotp"]
+
+[sub_resource type="FontFile" id="FontFile_1jotp"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_8n8ig"]
+font = SubResource("FontFile_1jotp")
+font_size = 25
+font_color = Color(0.94902, 0.0705882, 0, 0.552941)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0.333333, 0.905882)
+
+[node name="creditos" type="CanvasLayer"]
+script = ExtResource("1_roc4m")
+
+[node name="n" type="NinePatchRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="c" type="VBoxContainer" parent="n"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="c1" type="Control" parent="n/c"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="c2" type="Control" parent="n/c"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="n/c/c2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="n/c/c2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Créditos"
+label_settings = SubResource("LabelSettings_8n8ig")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="n/c/c2/ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -19.0
+offset_right = -16.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("2_1jotp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="h" type="HBoxContainer" parent="n/c"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="c1" type="Control" parent="n/c/h"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Tree" type="Tree" parent="n/c/h"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+hide_root = true
+auto_tooltip = false
+
+[node name="c2" type="Control" parent="n/c/h"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 0)
+layout_direction = 1
+layout_mode = 2
+
+[node name="c3" type="Control" parent="n/c"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[connection signal="pressed" from="n/c/c2/ColorRect/TextureButton" to="." method="_on_texture_button_pressed"]

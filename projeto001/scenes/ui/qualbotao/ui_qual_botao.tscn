@@ -1,0 +1,218 @@
+[gd_scene load_steps=9 format=3 uid="uid://jn2rn75tkd2y"]
+
+[ext_resource type="Script" uid="uid://2wudabjrv7vv" path="res://scenes/ui/qualbotao/ui_qual_botao.gd" id="1_ru4g0"]
+[ext_resource type="Texture2D" uid="uid://b6v600wlkgl18" path="res://assets/img/icon_close.png" id="2_r3c1m"]
+[ext_resource type="Texture2D" uid="uid://disatnhhglrwx" path="res://assets/img/cell-inventory.png" id="3_nuynk"]
+[ext_resource type="Texture2D" uid="uid://bunw4hi18wayd" path="res://assets/img/icon_check.png" id="3_ru4g0"]
+
+[sub_resource type="FontFile" id="FontFile_o6mds"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_348rp"]
+font = SubResource("FontFile_o6mds")
+
+[sub_resource type="FontFile" id="FontFile_6tc4d"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/13/0/ascent = 0.0
+cache/0/13/0/descent = 0.0
+cache/0/13/0/underline_position = 0.0
+cache/0/13/0/underline_thickness = 0.0
+cache/0/13/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_obyln"]
+font = SubResource("FontFile_6tc4d")
+font_size = 13
+
+[node name="UI_QualBotao" type="CanvasLayer"]
+layer = 20
+script = ExtResource("1_ru4g0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="v1" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -254.5
+offset_right = 151.0
+offset_bottom = 254.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="v1"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="v1/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Escolhido"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="v1/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -9.5
+offset_right = -5.0
+offset_bottom = 10.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("2_r3c1m")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="p0" type="Panel" parent="v1"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+
+[node name="t" type="TextureRect" parent="v1/p0"]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 55.0
+texture = ExtResource("3_nuynk")
+expand_mode = 1
+
+[node name="t" type="TextureRect" parent="v1/p0/t"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="v2" type="VBoxContainer" parent="v1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="v1/v2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="v1/v2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Atalhos"
+label_settings = SubResource("LabelSettings_348rp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sc" type="ScrollContainer" parent="v1/v2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="v" type="VBoxContainer" parent="v1/v2/sc"]
+custom_minimum_size = Vector2(0, -2)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="p0" type="Panel" parent="v1/v2/sc/v"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+
+[node name="t" type="TextureRect" parent="v1/v2/sc/v/p0"]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 55.0
+texture = ExtResource("3_nuynk")
+expand_mode = 1
+
+[node name="t" type="TextureRect" parent="v1/v2/sc/v/p0/t"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="v1/v2/sc/v/p0"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -14.0
+offset_right = -210.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Q"
+label_settings = SubResource("LabelSettings_obyln")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="bt" type="TextureButton" parent="v1/v2/sc/v/p0"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -19.5
+offset_right = -11.0
+offset_bottom = 17.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("3_ru4g0")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="v1/Panel/TextureButton" to="." method="_on_texture_button_pressed"]

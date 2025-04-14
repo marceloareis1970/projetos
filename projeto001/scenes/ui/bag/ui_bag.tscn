@@ -1,0 +1,165 @@
+[gd_scene load_steps=6 format=3 uid="uid://cutmki40i22w8"]
+
+[ext_resource type="Script" uid="uid://dhennlxkecf4l" path="res://scenes/ui/bag/ui_bag.gd" id="1_5e1r8"]
+[ext_resource type="Texture2D" uid="uid://b6v600wlkgl18" path="res://assets/img/icon_close.png" id="2_n3bfa"]
+[ext_resource type="Texture2D" uid="uid://disatnhhglrwx" path="res://assets/img/cell-inventory.png" id="3_wgbl7"]
+
+[sub_resource type="FontFile" id="FontFile_0exra"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_xn7ya"]
+font = SubResource("FontFile_0exra")
+font_size = 10
+outline_size = 2
+outline_color = Color(0.00820202, 0.00820202, 0.00820202, 1)
+shadow_color = Color(0, 0, 0.635294, 0.882353)
+
+[node name="UI_bag" type="CanvasLayer"]
+script = ExtResource("1_5e1r8")
+
+[node name="n" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(480, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -150.0
+offset_right = 240.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="c" type="VBoxContainer" parent="n"]
+layout_mode = 0
+offset_right = 477.0
+offset_bottom = 40.0
+
+[node name="c1" type="ColorRect" parent="n/c"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+color = Color(0.184314, 0.196078, 0.054902, 1)
+
+[node name="Label" type="Label" parent="n/c/c1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Inventário"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="TextureButton" parent="n/c/c1"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("2_n3bfa")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="cash" type="Label" parent="n/c/c1"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 77.0
+offset_bottom = 1.0
+grow_vertical = 2
+text = "Cash:000"
+
+[node name="c2" type="ColorRect" parent="n/c"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+color = Color(0.184314, 0.196078, 0.054902, 0.407843)
+
+[node name="v" type="VBoxContainer" parent="n/c/c2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = -15.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="H" type="HBoxContainer" parent="n/c/c2/v"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="s" type="ScrollContainer" parent="n/c/c2/v/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="g" type="GridContainer" parent="n/c/c2/v/H/s"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 8
+
+[node name="p0" type="Panel" parent="n/c/c2/v/H/s/g"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="bg" type="TextureRect" parent="n/c/c2/v/H/s/g/p0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wgbl7")
+expand_mode = 1
+
+[node name="img" type="TextureRect" parent="n/c/c2/v/H/s/g/p0"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 46.0
+offset_bottom = 46.0
+
+[node name="Label" type="Label" parent="n/c/c2/v/H/s/g/p0"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "00"
+label_settings = SubResource("LabelSettings_xn7ya")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="n/c/c1/Button" to="." method="_on_button_pressed"]

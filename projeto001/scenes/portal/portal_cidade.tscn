@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxbndu6hraewk"]
+
+[ext_resource type="Script" uid="uid://qy4a130k6ycy" path="res://scenes/portal/portal_cidade.gd" id="1_m8ceu"]
+[ext_resource type="Texture2D" uid="uid://dwifk83t7ygs7" path="res://assets/img/bg.png" id="1_mi7yc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8ceu"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_mi7yc")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h7o7k"]
+material = SubResource("StandardMaterial3D_m8ceu")
+
+[sub_resource type="Animation" id="Animation_h7o7k"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.30693, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_m8ceu"]
+resource_name = "start"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.30693, -0.25, 0, 0.25, 0, 2.6061, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.314159, -0.25, 0, 0.25, 0, 6.28319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ativar_elevador"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5edb"]
+_data = {
+&"RESET": SubResource("Animation_h7o7k"),
+&"start": SubResource("Animation_m8ceu")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m8ceu"]
+radius = 0.73584
+
+[node name="portal_cidade" type="Node3D"]
+script = ExtResource("1_m8ceu")
+
+[node name="elevador" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.30693, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="elevador"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.82465, 0)
+mesh = SubResource("CylinderMesh_h7o7k")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="elevador"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.38977, 0)
+billboard = 1
+text = "cidade Alfa"
+font_size = 50
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="elevador"]
+libraries = {
+&"": SubResource("AnimationLibrary_n5edb")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.929653, 0)
+shape = SubResource("CylinderShape3D_m8ceu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 27.0
+offset_right = 75.0
+offset_bottom = 67.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

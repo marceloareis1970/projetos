@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdo860t5qmrjr"]
+
+[ext_resource type="Script" uid="uid://cvt4g7v7ydfmx" path="res://scenes/mob/spawn/spawn_mobs.gd" id="1_quqq8"]
+
+[node name="spawn_mobs" type="Node3D"]
+script = ExtResource("1_quqq8")
+
+[node name="lista" type="Node3D" parent="."]

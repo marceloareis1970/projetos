@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://2kfy0jbq5ahv"]
+
+[ext_resource type="Texture2D" uid="uid://dwifk83t7ygs7" path="res://assets/img/bg.png" id="1_fm53d"]
+[ext_resource type="Script" uid="uid://btwh8b580qie6" path="res://scenes/mapa/regiao_001.gd" id="1_wy805"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8l1w6"]
+albedo_texture = ExtResource("1_fm53d")
+uv1_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_pg520"]
+material = SubResource("StandardMaterial3D_8l1w6")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v373u"]
+data = PackedVector3Array(50, -50, 0, -50, -50, 0, 50, 50, 0, -50, -50, 0, -50, 50, 0, 50, 50, 0)
+
+[node name="regiao_001" type="Node3D"]
+script = ExtResource("1_wy805")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_pg520")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v373u")
+
+[node name="portao" type="Node3D" parent="."]

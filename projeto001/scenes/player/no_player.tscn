@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbouhar7svyck"]
+
+[ext_resource type="Script" uid="uid://byn5jgehuhnoy" path="res://scenes/player/no_player.gd" id="1_468f6"]
+[ext_resource type="PackedScene" uid="uid://bc2w1fsfjadtd" path="res://scenes/player/player.tscn" id="1_tu6lw"]
+
+[sub_resource type="Animation" id="Animation_468f6"]
+resource_name = "aproximar"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 60.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ativar"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ipcjy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [60.0]
+}
+
+[sub_resource type="Animation" id="Animation_vhes1"]
+resource_name = "distanciar"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [60.0, 75.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhes1"]
+_data = {
+&"RESET": SubResource("Animation_ipcjy"),
+&"aproximar": SubResource("Animation_468f6"),
+&"distanciar": SubResource("Animation_vhes1")
+}
+
+[node name="no_player" type="Node3D"]
+script = ExtResource("1_468f6")
+
+[node name="player" parent="." instance=ExtResource("1_tu6lw")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.521918, 0.852996, 0, -0.852996, 0.521918, 0, 13.1828, 6.77308)
+fov = 60.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vhes1")
+}
