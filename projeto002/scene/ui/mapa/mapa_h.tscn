@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1wiv2yh5l8dj"]
+
+[ext_resource type="Script" uid="uid://ndd5s44khx3f" path="res://scene/ui/mapa/mapa_h.gd" id="1_6ray5"]
+[ext_resource type="Texture2D" uid="uid://cvxcf8m011ure" path="res://assets/img/Space_Background2.png" id="2_pdje0"]
+[ext_resource type="Texture2D" uid="uid://dtxidkn8febj" path="res://assets/img/circulo.png" id="3_xgkyf"]
+[ext_resource type="Texture2D" uid="uid://rjaw1vc1vtrx" path="res://assets/img/planeta.png" id="4_dqhdw"]
+[ext_resource type="Texture2D" uid="uid://dmvuu0mp27u3r" path="res://assets/img/icon_menos.png" id="5_rg40q"]
+[ext_resource type="Texture2D" uid="uid://dm1gshu5sxqx5" path="res://assets/img/icon_mais.png" id="6_8v6n7"]
+[ext_resource type="Texture2D" uid="uid://bp10e44874nxl" path="res://assets/img/icon_close.png" id="7_6ths7"]
+
+[node name="mapa_hiperdriver" type="Node2D"]
+script = ExtResource("1_6ray5")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="n" type="NinePatchRect" parent="ui"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -187.0
+offset_right = 308.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t" type="TextureRect" parent="ui/n"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pdje0")
+expand_mode = 1
+
+[node name="combustivel" type="TextureRect" parent="ui/n/t"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 68.0
+offset_right = 151.0
+offset_bottom = 118.0
+texture = ExtResource("3_xgkyf")
+expand_mode = 1
+
+[node name="Node" type="Control" parent="ui/n/t"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="ui/n/t/Node"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 300.0
+offset_top = 137.0
+offset_right = 320.0
+offset_bottom = 156.0
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="ui/n/t/Node/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 2.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_dqhdw")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/n"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="ui/n/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Destino:"
+
+[node name="Button" type="TextureButton" parent="ui/n/HBoxContainer"]
+custom_minimum_size = Vector2(25, 20)
+layout_mode = 2
+texture_normal = ExtResource("5_rg40q")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button2" type="TextureButton" parent="ui/n/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture_normal = ExtResource("6_8v6n7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Control" type="Control" parent="ui/n/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="fechar" type="TextureButton" parent="ui/n/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture_normal = ExtResource("7_6ths7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="gui_input" from="ui/n/t/Node/Control" to="." method="_on_control_gui_input"]
+[connection signal="mouse_entered" from="ui/n/t/Node/Control" to="." method="_on_control_mouse_entered"]
+[connection signal="pressed" from="ui/n/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ui/n/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ui/n/HBoxContainer/fechar" to="." method="_on_fechar_pressed"]

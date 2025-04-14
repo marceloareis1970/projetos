@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://tw1yal142ey2"]
+
+[ext_resource type="Texture2D" uid="uid://c7uw7lnfw3i1y" path="res://assets/img/estacao.png" id="1_3b6w3"]
+[ext_resource type="Script" uid="uid://cxexfpc1xdnvy" path="res://scene/carga/carga.gd" id="1_xqbim"]
+
+[sub_resource type="Animation" id="Animation_8rifm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_j3cp7"]
+resource_name = "start"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vcn8w"]
+_data = {
+&"RESET": SubResource("Animation_8rifm"),
+&"start": SubResource("Animation_j3cp7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqbim"]
+radius = 38.3275
+
+[node name="carga" type="Node2D"]
+script = ExtResource("1_xqbim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 6.28319
+texture = ExtResource("1_3b6w3")
+region_enabled = true
+region_rect = Rect2(415, 413, 35, 35)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vcn8w")
+}
+autoplay = "start"
+speed_scale = 0.1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xqbim")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
