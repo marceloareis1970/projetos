@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://daeftde7tc3m2"]
+
+[ext_resource type="Script" uid="uid://djho3jux6fdai" path="res://scene/mapa/mapa.gd" id="1_jbsww"]
+[ext_resource type="Script" uid="uid://cdaqjmwri6nvy" path="res://scene/mapa/parallax_background.gd" id="2_3ewbo"]
+[ext_resource type="Texture2D" uid="uid://bvl8n817rwt6l" path="res://assets/img/Space_Background1.png" id="2_cdn6u"]
+[ext_resource type="PackedScene" uid="uid://cr1eq47t0tqj5" path="res://scene/player/player.tscn" id="2_gegri"]
+[ext_resource type="PackedScene" uid="uid://4uc3mbxh08bt" path="res://scene/estacao/espaco_estacao.tscn" id="4_gss56"]
+[ext_resource type="Texture2D" uid="uid://b8jh1g8v40pl7" path="res://assets/img/bar.png" id="5_i4dev"]
+
+[sub_resource type="FontFile" id="FontFile_gss56"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_gss56"]
+font = SubResource("FontFile_gss56")
+font_size = 12
+
+[node name="mapa" type="Node2D"]
+script = ExtResource("1_jbsww")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+script = ExtResource("2_3ewbo")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(13, 475)
+texture = ExtResource("2_cdn6u")
+
+[node name="estacao" type="Node" parent="."]
+
+[node name="estacao" parent="estacao" instance=ExtResource("4_gss56")]
+position = Vector2(554, 554)
+
+[node name="inimigos" type="Node" parent="."]
+
+[node name="tiros" type="Node" parent="."]
+
+[node name="player" type="Node" parent="."]
+
+[node name="player" parent="player" instance=ExtResource("2_gegri")]
+position = Vector2(558, 581)
+
+[node name="UI_mapa" type="Node" parent="."]
+
+[node name="UI_display" type="Node" parent="."]
+
+[node name="UI_inventario" type="Node" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/NinePatchRect"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 11.0
+offset_right = 1130.0
+offset_bottom = 19.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_i4dev")
+texture_progress = ExtResource("5_i4dev")
+tint_under = Color(1, 1, 1, 0)
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+offset_left = 12.0
+offset_top = 326.0
+offset_right = 337.0
+offset_bottom = 637.0
+color = Color(0.184314, 0.196078, 0.054902, 0.698039)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 12.0
+offset_right = -10.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/ColorRect/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+text = "dfd  fdsfs dsdfs  df df f df df fsfsdfsdf fg fdgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgd"
+label_settings = SubResource("LabelSettings_gss56")
+autowrap_mode = 1
+
+[node name="Timer" type="Timer" parent="UI/ColorRect/ScrollContainer/VBoxContainer/Label"]
+wait_time = 5.0

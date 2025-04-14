@@ -1,0 +1,319 @@
+[gd_scene load_steps=11 format=3 uid="uid://blny7dn77v537"]
+
+[ext_resource type="Script" uid="uid://c5jq1dj3b5iee" path="res://scene/ui/comercio/ui_comercio.gd" id="1_y047u"]
+[ext_resource type="Texture2D" uid="uid://dmvuu0mp27u3r" path="res://assets/img/icon_menos.png" id="2_golmm"]
+[ext_resource type="Texture2D" uid="uid://dm1gshu5sxqx5" path="res://assets/img/icon_mais.png" id="3_8hb85"]
+[ext_resource type="Texture2D" uid="uid://br4w50tqfg1md" path="res://assets/img/icon_check.png" id="4_a7oi2"]
+
+[sub_resource type="FontFile" id="FontFile_golmm"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_8hb85"]
+font = SubResource("FontFile_golmm")
+font_size = 12
+
+[sub_resource type="FontFile" id="FontFile_8hb85"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_52m7p"]
+font = SubResource("FontFile_8hb85")
+font_size = 12
+
+[sub_resource type="FontFile" id="FontFile_a7oi2"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8b2p"]
+font = SubResource("FontFile_a7oi2")
+font_size = 12
+
+[node name="UI_comercio" type="CanvasLayer"]
+script = ExtResource("1_y047u")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(480, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -150.0
+offset_right = 240.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_right = 477.0
+offset_bottom = 40.0
+
+[node name="c1" type="ColorRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+color = Color(0.184314, 0.196078, 0.054902, 1)
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/c1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Comércio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer/c1"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -15.0
+offset_right = -8.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "X"
+
+[node name="cash" type="Label" parent="NinePatchRect/VBoxContainer/c1"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 77.0
+offset_bottom = 1.0
+grow_vertical = 2
+text = "Cash:000"
+
+[node name="c2" type="ColorRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+color = Color(0.184314, 0.196078, 0.054902, 0.407843)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/c2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="PanelContainer" type="Label" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Comprar"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="Label" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vender"
+horizontal_alignment = 1
+
+[node name="H" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="scCompra" type="ScrollContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="p0" type="Panel" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="h" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="v" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0/h"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="produto" type="Label" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0/h/v"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 1
+text = "produto A"
+label_settings = SubResource("LabelSettings_8hb85")
+autowrap_mode = 1
+
+[node name="preco" type="Label" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0/h/v"]
+layout_mode = 2
+text = "Valor Unitário: 00.00"
+label_settings = SubResource("LabelSettings_52m7p")
+
+[node name="h" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0/h/v"]
+layout_mode = 2
+
+[node name="btmenos" type="TextureButton" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0/h/v/h"]
+custom_minimum_size = Vector2(25, 5)
+layout_mode = 2
+texture_normal = ExtResource("2_golmm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="qtd" type="HScrollBar" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0/h/v/h"]
+custom_minimum_size = Vector2(50, 8)
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="btmais" type="TextureButton" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0/h/v/h"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+texture_normal = ExtResource("3_8hb85")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="display" type="Label" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0/h/v/h"]
+layout_mode = 2
+text = "00/00"
+label_settings = SubResource("LabelSettings_d8b2p")
+
+[node name="btconfirmar" type="TextureButton" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scCompra/VBoxContainer/p0/h/v/h"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture_normal = ExtResource("4_a7oi2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="scVenda" type="ScrollContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="p0" type="Panel" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="h" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="v" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0/h"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="produto" type="Label" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0/h/v"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 1
+text = "produto A"
+label_settings = SubResource("LabelSettings_8hb85")
+autowrap_mode = 1
+
+[node name="preco" type="Label" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0/h/v"]
+layout_mode = 2
+text = "Valor Unitário: 00.00"
+label_settings = SubResource("LabelSettings_52m7p")
+
+[node name="h" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0/h/v"]
+layout_mode = 2
+
+[node name="btmenos" type="TextureButton" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0/h/v/h"]
+custom_minimum_size = Vector2(25, 5)
+layout_mode = 2
+texture_normal = ExtResource("2_golmm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="qtd" type="HScrollBar" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0/h/v/h"]
+custom_minimum_size = Vector2(50, 8)
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="btmais" type="TextureButton" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0/h/v/h"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+texture_normal = ExtResource("3_8hb85")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="display" type="Label" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0/h/v/h"]
+layout_mode = 2
+text = "00/00"
+label_settings = SubResource("LabelSettings_d8b2p")
+
+[node name="btconfirmar" type="TextureButton" parent="NinePatchRect/VBoxContainer/c2/VBoxContainer/H/scVenda/VBoxContainer/p0/h/v/h"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture_normal = ExtResource("4_a7oi2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/c1/Button" to="." method="_on_button_pressed"]

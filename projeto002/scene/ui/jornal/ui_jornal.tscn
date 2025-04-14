@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfx1gkyd03ngq"]
+
+[ext_resource type="Script" uid="uid://vj0fnehhgwto" path="res://scene/ui/jornal/ui_jornal.gd" id="1_ubgb3"]
+
+[node name="ui_jornal" type="CanvasLayer"]
+script = ExtResource("1_ubgb3")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = -146.0
+offset_right = 243.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_right = 477.0
+offset_bottom = 40.0
+
+[node name="c1" type="ColorRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+color = Color(0.184314, 0.196078, 0.054902, 1)
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/c1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jornal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer/c1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.981
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -12.937
+offset_top = -15.0
+offset_right = -4.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "X"
+
+[node name="c2" type="ColorRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+color = Color(0.184314, 0.196078, 0.054902, 0.407843)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/VBoxContainer/c2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer/c2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/c1/Button" to="." method="_on_button_pressed"]

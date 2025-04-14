@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg6oxhvde4bh8"]
+
+[ext_resource type="Texture2D" uid="uid://bjy1ocrnyis6q" path="res://assets/img/tileset_estacao.png" id="1_ukj6a"]
+
+[node name="chao" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ukj6a")
+region_enabled = true
+region_rect = Rect2(81, 430, 41, 44)
