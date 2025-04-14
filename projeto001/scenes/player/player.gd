@@ -68,9 +68,9 @@ func olhar_para():
 		look_at(look_at_point)
 
 func movimento(delta):
-	if moving: # se pode mover, pegaremos distancia destino  esubitrairemos da distancia do player
+	if moving: # se pode mover, pegaremos distancia destino  e subtrairemos da distancia do player
 		var direction = (target_position - global_transform.origin).normalized() # normalized é para transformar os valores entre -1 até 1, para x,y,z
-		velocity = direction * move_speed  # aplicamos move_speed para mover na direçao desejada (velocidade). Se usar o delta, lembra-se de amuentar o valor da speed senão parecerá bem lento
+		velocity = direction * move_speed  # aplicamos move_speed para mover na direçao desejada (velocidade). Se usar o delta, lembra-se de aumentar o valor da speed senão parecerá bem lento
 		move_and_slide() # registra o movimento do character3D
 
 	# Verifica se chegou ao destino
@@ -84,7 +84,7 @@ func atirar(delta):
 	if not Comum.eu.pode_atirar: #setada para não poder atirar
 		return
 	var atalhos=["q","w","e","r","t"]
-	for i in range(0,5): # são 5 stalhos
+	for i in range(0,5): # são 5 atalhos
 		var key=atalhos[i] # pega o valor do atalho na posicao i para analisar no codigo abaixo
 		if not Comum.eu.atalhos.get(key).is_empty(): # se existe uma arma em W associada .. 
 			Comum.eu.atalhos.get(key).deltatempo.atual -= delta # pega o tempo de W e subtrai delta dele

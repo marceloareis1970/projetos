@@ -43,12 +43,12 @@ func _physics_process(delta: float) -> void:
 					var tmp=preload("res://scenes/ui/receitas/ui_receitas_criar.tscn").instantiate() # instanciar a tela de receitas
 					interface_tipo_de_npc.add_child(tmp) # adicionar ao npc para ser visualizada
 				TIPO_DE_NPC.ALTERAR_SKILLS: # carregar skills
-					var tmp=preload("res://scenes/ui/alterar_skill/ui_alterar_skill.tscn").instantiate() # instanciar a tela de receitas
+					var tmp=preload("res://scenes/ui/alterar_skill/ui_alterar_skill.tscn").instantiate() # instanciar a tela de skills
 					interface_tipo_de_npc.add_child(tmp) # adicionar ao npc para ser visualizada
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"): # se detectamos que o player entrou na área de contato
-		ativo=true # registramos que estpa dentro da área de contato
+		ativo=true # registramos que está dentro da área de contato
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"): # se detectamos que o player saiu da área de contato
