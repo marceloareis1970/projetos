@@ -2,3 +2,4 @@
 A página raiz dos projetos. Todos os projetos, estou procurando detalhar, a cada linha de código (LOC) o que faz ou o que significa ela, para ajudar o desenvolvimento e entendimento do que foi desejado fazer.
 
 * projeto001 - Jogo em 3D. Uma ideia de jogo onde você controla um player com o mouse e utiliza ataques com as teclas QWERT. Bem conhecidos (Não darei nomes, sei lá, direitos autorais). O perfil do desenvolvedor - acima de novo, abaixo de experiênte.
+* projeto002 - jogo em 2D. Baseado em um antigo modelo de jogo que utilizava, onde você navega em uma nave, de estação espacial em estação espacial, vendendo/comprando produtos. Também um modelo de jogo, em aberto, para um perfil de jogador acima de novato e abaixo de experiente.
