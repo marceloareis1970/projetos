@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj44b88itvryc"]
+
+[ext_resource type="Script" uid="uid://c8xw50bgvmpd" path="res://scene/tiro/canhao_dagua.gd" id="1_euiwo"]
+
+[node name="canhao_dagua" type="Node3D"]
+script = ExtResource("1_euiwo")

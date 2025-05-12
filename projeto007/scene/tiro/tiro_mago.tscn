@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv4aea2qpjetk"]
+
+[ext_resource type="Script" uid="uid://d1j0sw3y2ptie" path="res://scene/tiro/tiro.gd" id="1_46cdr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u7jbk"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_j8sa4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_46cdr"]
+radius = 0.162115
+
+[node name="tiro_mago" type="Node3D"]
+script = ExtResource("1_46cdr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -0.000750444, 0.499999, 0, -0.499999, -0.000750444, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_u7jbk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447904, 0.000672254)
+mesh = SubResource("SphereMesh_j8sa4")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, -0.000750444, 0.499999, 0, -0.499999, -0.000750444, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_46cdr")

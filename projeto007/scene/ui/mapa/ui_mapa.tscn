@@ -1,0 +1,172 @@
+[gd_scene load_steps=10 format=3 uid="uid://vf3hp7olovyd"]
+
+[ext_resource type="Script" uid="uid://cfolrn7k2iynj" path="res://scene/ui/mapa/ui_mapa.gd" id="1_kubtm"]
+[ext_resource type="Texture2D" uid="uid://t361fmrmp8k8" path="res://assets/images/icon_close.png" id="2_bcmkb"]
+[ext_resource type="Texture2D" uid="uid://tqbdvy6un124" path="res://assets/images/mapa.png" id="3_wy1yy"]
+[ext_resource type="Texture2D" uid="uid://douy630se6uf5" path="res://assets/images/marcador_cidade.png" id="4_wy1yy"]
+[ext_resource type="Texture2D" uid="uid://cve3s6xk72w71" path="res://assets/images/marcador_mobs.png" id="5_37r8a"]
+[ext_resource type="Texture2D" uid="uid://bs7ghicekq2nd" path="res://assets/images/cell-inventory.png" id="6_hh8sj"]
+[ext_resource type="Texture2D" uid="uid://hvu8528fnfos" path="res://assets/images/circulo.png" id="7_oqy1k"]
+
+[sub_resource type="FontFile" id="FontFile_siijh"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_37r8a"]
+font = SubResource("FontFile_siijh")
+font_size = 25
+
+[node name="UiMapa" type="CanvasLayer"]
+process_mode = 2
+layer = 10
+script = ExtResource("1_kubtm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.02278e-07, 0.0957536, 0.0958769, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Panel" type="Panel" parent="ColorRect/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/NinePatchRect/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mapa "
+label_settings = SubResource("LabelSettings_37r8a")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextureButton" type="TextureButton" parent="ColorRect/NinePatchRect/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -20.0
+offset_right = -6.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_bcmkb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("3_wy1yy")
+
+[node name="Control" type="Control" parent="ColorRect/NinePatchRect/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="."]
+editor_description = "encontramos aqui todos os nossos modelos utilizados no mapa"
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="cidade" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 21.0
+offset_bottom = 21.0
+texture = ExtResource("4_wy1yy")
+expand_mode = 1
+
+[node name="mobs" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 21.0
+offset_bottom = 21.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+texture = ExtResource("5_37r8a")
+expand_mode = 1
+
+[node name="g" type="GridContainer" parent="Control/mobs"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 3.0
+offset_right = 93.0
+offset_bottom = 13.0
+mouse_filter = 2
+
+[node name="t" type="TextureRect" parent="Control/mobs/g"]
+visible = false
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_hh8sj")
+expand_mode = 1
+
+[node name="t" type="TextureRect" parent="Control/mobs/g/t"]
+clip_contents = true
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 9.0
+offset_bottom = 9.0
+mouse_filter = 2
+expand_mode = 1
+
+[node name="onde_estou" type="TextureRect" parent="Control"]
+editor_description = "Onde você está. em qual cidade"
+visible = false
+layout_mode = 0
+offset_right = 21.0
+offset_bottom = 21.0
+mouse_filter = 2
+texture = ExtResource("7_oqy1k")
+expand_mode = 1
+
+[connection signal="pressed" from="ColorRect/NinePatchRect/VBoxContainer/Panel/TextureButton" to="." method="_on_texture_button_pressed"]

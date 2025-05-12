@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkpog7q7onidl"]
+
+[ext_resource type="Script" uid="uid://bhvocyc2qwqw8" path="res://scene/tiro/bola_de_fogo.gd" id="1_lsr57"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_034l8"]
+albedo_color = Color(0.32549, 0.65098, 0.741176, 1)
+emission_enabled = true
+emission = Color(0.32549, 0.65098, 0.741176, 1)
+emission_energy_multiplier = 13.18
+
+[sub_resource type="SphereMesh" id="SphereMesh_yvd5e"]
+material = SubResource("StandardMaterial3D_034l8")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lsr57"]
+radius = 1.30186
+
+[node name="bola_de_gelo" type="Node3D"]
+script = ExtResource("1_lsr57")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_yvd5e")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_lsr57")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccmrjvhf1ck73"]
+
+[ext_resource type="Script" uid="uid://d1j0sw3y2ptie" path="res://scene/tiro/tiro.gd" id="1_upnxh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t1n6o"]
+radius = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_upnxh"]
+radius = 0.162115
+
+[node name="tiro" type="Node3D"]
+script = ExtResource("1_upnxh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -0.000750444, 0.499999, 0, -0.499999, -0.000750444, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_t1n6o")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, -0.000750444, 0.499999, 0, -0.499999, -0.000750444, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_upnxh")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

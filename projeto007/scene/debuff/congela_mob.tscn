@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1gdjj56nftgl"]
+
+[ext_resource type="Script" uid="uid://bp8wcdkd0vscd" path="res://scene/debuff/congela_mob.gd" id="1_w68gy"]
+
+[node name="congela_mob" type="Node3D"]
+script = ExtResource("1_w68gy")
