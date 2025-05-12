@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://kbq1tbo45xcb"]
+
+[ext_resource type="Script" uid="uid://b2mw6vkpetpgq" path="res://scene/conectores/mapa.gd" id="1_6vmp3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6qw4r"]
+size = Vector3(5, 3, 5)
+
+[node name="mapa" type="Node3D"]
+script = ExtResource("1_6vmp3")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_6qw4r")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33244, 0)
+billboard = 1
+text = "Portal"
+font_size = 100
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.0
+offset_top = 13.0
+offset_right = 21.0
+offset_bottom = 53.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

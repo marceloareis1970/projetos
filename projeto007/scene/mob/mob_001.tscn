@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://ii0hhkfmdi1o"]
+
+[ext_resource type="Script" uid="uid://4wby07hclan2" path="res://scene/mob/mob_001.gd" id="1_q8n5n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gss56"]
+size = Vector3(3.08596, 3.87491, 2.92739)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ern65"]
+
+[sub_resource type="Animation" id="Animation_vfbxg"]
+resource_name = "andando"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8o7ja"]
+resource_name = "ataque"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1), Vector3(0, 0, 1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1u64g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uik6y"]
+_data = {
+&"RESET": SubResource("Animation_1u64g"),
+&"andando": SubResource("Animation_vfbxg"),
+&"ataque": SubResource("Animation_8o7ja")
+}
+
+[node name="mob_001" type="Node3D"]
+script = ExtResource("1_q8n5n")
+
+[node name="Area3D" type="Area3D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021, 0, 0.021)
+shape = SubResource("BoxShape3D_gss56")
+debug_color = Color(0.978027, 0, 0.399471, 0.42)
+
+[node name="mob" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="mob"]
+mesh = SubResource("SphereMesh_ern65")
+skeleton = NodePath("../../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mob"]
+libraries = {
+&"": SubResource("AnimationLibrary_uik6y")
+}
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,0 +1,225 @@
+[gd_scene load_steps=11 format=3 uid="uid://euxcteihi6am"]
+
+[ext_resource type="Script" uid="uid://d3hat7q10t3xv" path="res://scene/ui/escolhe_player/ui_escolhe_player.gd" id="1_ho27x"]
+[ext_resource type="Texture2D" uid="uid://t361fmrmp8k8" path="res://assets/images/icon_close.png" id="2_13k1k"]
+[ext_resource type="Texture2D" uid="uid://b6veq42fsad40" path="res://assets/images/icon_check.png" id="3_8vdm3"]
+[ext_resource type="Texture2D" uid="uid://bs7ghicekq2nd" path="res://assets/images/cell-inventory.png" id="3_qdom6"]
+[ext_resource type="Texture2D" uid="uid://d3uqjrrjeldhk" path="res://assets/images/icon_check_off.png" id="4_qdom6"]
+[ext_resource type="Texture2D" uid="uid://cf7u2jluj8y32" path="res://assets/images/right-icon.png" id="4_siijh"]
+
+[sub_resource type="FontFile" id="FontFile_qdom6"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_0untx"]
+font = SubResource("FontFile_qdom6")
+font_size = 25
+
+[sub_resource type="FontFile" id="FontFile_siijh"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ksxmi"]
+font = SubResource("FontFile_siijh")
+outline_size = 3
+outline_color = Color(0.115371, 0.115562, 0.4301, 1)
+shadow_size = 3
+shadow_color = Color(0.115371, 0.115562, 0.4301, 1)
+
+[node name="UI_escolhe_player" type="CanvasLayer"]
+process_mode = 2
+layer = 10
+script = ExtResource("1_ho27x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.02278e-07, 0.0957536, 0.0958769, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="ColorRect/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/NinePatchRect/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Taverna"
+label_settings = SubResource("LabelSettings_0untx")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextureButton" type="TextureButton" parent="ColorRect/NinePatchRect/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -20.0
+offset_right = -6.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("2_13k1k")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="sc1" type="ScrollContainer" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/sc1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/sc1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="bg" type="TextureRect" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/sc1/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 6.0
+offset_right = 101.0
+offset_bottom = 93.0
+texture = ExtResource("3_qdom6")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/sc1/VBoxContainer/Panel/bg"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 78.0
+offset_bottom = 81.0
+expand_mode = 1
+
+[node name="level" type="Label" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/sc1/VBoxContainer/Panel/bg"]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 44.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_ksxmi")
+horizontal_alignment = 1
+
+[node name="nome" type="Label" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/sc1/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 19.0
+offset_right = 405.0
+offset_bottom = 42.0
+text = "xxcxcxcx"
+
+[node name="classe" type="Label" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/sc1/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 62.0
+offset_right = 409.0
+offset_bottom = 85.0
+text = "xxcxcxcxcxcxcxcxcxcx"
+
+[node name="TextureButton" type="TextureButton" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/sc1/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -20.0
+offset_right = -13.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("4_siijh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="VBoxContainer" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="sc2" type="ScrollContainer" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/Panel/sc2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="Panel" type="Panel" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/Panel"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="escolhido" type="TextureButton" parent="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("3_8vdm3")
+texture_disabled = ExtResource("4_qdom6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="ColorRect/NinePatchRect/VBoxContainer/Panel/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="ColorRect/NinePatchRect/VBoxContainer/HBoxContainer/Panel/Panel/escolhido" to="." method="_on_escolhido_pressed"]

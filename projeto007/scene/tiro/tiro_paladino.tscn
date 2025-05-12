@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://dni8dvdrt1h4v"]
+
+[ext_resource type="Script" uid="uid://drrgkgq1brujb" path="res://scene/tiro/tiro_paladino.gd" id="1_kgu08"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ju0m"]
+top_radius = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6skl7"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nhrwt"]
+height = 5.52393
+
+[sub_resource type="Animation" id="Animation_bgmiy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0slxc"]
+resource_name = "ataque"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uecr0"]
+_data = {
+&"RESET": SubResource("Animation_bgmiy"),
+&"ataque": SubResource("Animation_0slxc")
+}
+
+[node name="tiro_paladino" type="Node3D"]
+script = ExtResource("1_kgu08")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, -0.188682, 0, 0)
+
+[node name="movimentacao" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1021)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/movimentacao"]
+transform = Transform3D(0.5, 0, 0, 0, -0.00208376, 0.50101, 0, -1.38835, -0.000751961, 0, 0, -0.661771)
+mesh = SubResource("CylinderMesh_4ju0m")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/movimentacao/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.312184, 0, 0, 2.32831e-10, 0.998968, 0, -0.847877, -0.00352642)
+mesh = SubResource("CylinderMesh_6skl7")
+
+[node name="Area3D" type="Area3D" parent="Node3D/movimentacao"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/movimentacao/Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, -0.000750444, 0.499999, 0, -0.499999, -0.000750444, 0, -0.000959125, -0.639037)
+shape = SubResource("CylinderShape3D_nhrwt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uecr0")
+}
+autoplay = "ataque"
+
+[connection signal="area_entered" from="Node3D/movimentacao/Area3D" to="." method="_on_area_3d_area_entered"]

@@ -1,0 +1,189 @@
+data:03/05/2025
+objetivo:
+	um jogo onde utilizamos as teclas para movimentar um player e este
+	enfrentaria waves de mobs até chegar um boss.
+
+Observações:
+	É um MVP. e pode ser utilizado por qualquer pessoa, alterado sem 
+	necessidade de solicitação prévia.
+	Alguns desenhos foram gerados pelo copilot e algumas soluções fora 
+	iniciadas pelo copilot e pela AI do google, mas tive que alterar 
+	boa parte do código por não esta compativel com o que estava sendo
+	proposto
+
+Este projeto/código é destinado aqueles que já possuem algum conhecimento
+com Godot 4.x, ou seja, não se trata de um código para inciante, mas não
+quero dizer que este não possa utilizar, basta ser muito autodidata, o que
+é muito importante na área de programação.
+Utilizei sqlite para armazenar os dados e encontra-se em ("user:"), se estiver
+trabalhando no código, sugiro alterar o user:// or res:// em comum/database.gd
+para que, desta forma, fique na mesma pasta, mas lembre-se de mudar, pois o arquivo
+em .exe não aceita res://
+
+Detalhes:
+=========
+
+recuperar mana
+--------------
+* Colocar somente uma classe especifica e como passiva
+
+recuopera HP
+------------
+	A cada x tempo de recuperacao de HP,recarregamos x de valor menos na classe de mágicos
+	Se receber dano, recomeça a contagem
+
+
+Cidade: - ok
+=======
+	- A cidade tem uma taverna que tem personagens ( aventureiros ). Onde começamso.
+	Escolhemos um dos aventureiros da taberna. Todos tem o nivel mais baixo (1), então, 
+	ao escolher-mos um, abriremos o mapa e escolhemos a cidade que queremos ir
+	color(200,191,231,1)
+	{
+		"id":"cidade-001",
+		"posicao":{"x":0,"y":0}, # posicao no mapa
+		"nome":"Vera-Cruz",
+		"taverna":[ # não implementado, mas seriam todos os players que estariam na taverna para escolher-mos
+			{"id":"player-001"}, # o ID apenas pois os dados reais estariam armazenados na BD. Aqui também filtraria os player por cidades
+			{"id":"player-002"},
+			{"id":"player-003"},
+		],
+		"spot_mobs":[
+			
+		] # dentro desta lista teremos todos os spots que devemos derrortar 100% para liberar a cidade
+	}
+	- No mapa, poderemos ir de cidade em cidade, etava pensando em criar
+		campos que deveriam ser limpos antes de conseguir acessar a cidade.
+		o que me levou a pensar em colocar players nas tavernas de cada cidades
+		unicos, mas o problema é que, a quantidade de eventos seriam insuficientes
+		para,se, por acaso queira upar todos os players, o que me levou a ideia
+		de criar dungeons dentros dos campos, mas deixei apra depois para pensar
+		melhor.
+	
+
+mobs:Color(255,0,255,1)
+{
+	"id":"ponto-001",
+	"posicao":{"x":0,"y":0}, # posicao no mapa que pegamos a cor especifica
+	"nivel":1, # podemos utilizar como base para os mobs
+	"base":200, # base inicial do hp dos mobs
+	"estagio":{"atual":0,"maximo":10}, # quantas vezes teremos que zerar este mapa,
+	"estrutura":{} # ver detalhado abaixo
+}
+
+Como inicia
+na taberna. La teremos a lista de todos disponiveis para escolher-mos.
+Selecionamos um e ele aparece do lado de fora da taberna.
+Registramos os dados dele em Comum.eu e, saindo do jogo ou ao trocar de player, salvamos os dados ou toda vez
+que voltamos da guerra
+Para entrar na taverna
+
+Se existir um mob registrado no banco de dados, então não iremos para a taverna direta - ok
+Quando retorna de uma missão, vivo,salvaremos no banco de dados
+
+player:
+	Identificação do player na cidade:
+		- foto - ok
+		- classe
+			chapeu - ok
+			espada - ok
+			arco - ok
+		- Nome - ok
+	Movimentacao - 
+		- segue o mouse - ok
+		- transparencia em objetos entre player e observador - ok
+		- excluo objetos do tipo X para permitir que possa andar 
+			atrás sem problemas com navegabilidade - ok
+	Colocar um player com movimentos -ok
+		- player masculino - ok
+		- player feminino - ok
+	Alterar ataque basico por classe
+		- arquieiro - o que temos atualemnte - ok
+		- mago - um ataque bola bem pequena - ok
+		- paladino - espada rodando - ok
+
+Observação da tela com ZOOM - ok
+
+Criar borda de mapa - ok
+
+no campo:
+	- Quando aparecer algo importante no mapa de campo, temos que visualizar com um icone
+	- aparecer cavernas - (não agora)
+	- Criar lista de drop ao matar os mobs (nao agora)
+	- ao matar o boss, podemos liberar uma parte da lore (futuro)
+	- Quando finalizar uma corrida, o player recebe crédito que não destruimos e isso pode liberar outros mapas para o nível dele - nao feito
+	- Quando o player entrar no mapa, resetar valores - ok
+		obs: criado um Dictionary de reset que serão os valores reiniciados para eles
+			desta forma, podemos ter valores diferentes para cada tipo de player
+	- Um icone ao topo para retornar para a cidade a qualquer momento - ok
+	- Boss aparecendo automaticamente - ok
+	- 75% das waves aparecer um circulo no chao para chamar o boss - ok
+	- Um direcionador na tela para informar onde está o boss ou o circulo - Não ainda
+	- waves temporais que, a cada nível, aumenta a quantidade máxima dos mobs e seus níveis
+		Uma estrutura que contempla as waves e quais mobs irão aparecer.
+			estrutura:
+			{
+				"01":{
+					"nivel":1,
+					"qtd":5, # do mapa
+					"mobs":[
+							{"id":"mob-001","probabilidade":100},
+							{"id":"mob-002","probabilidade":100},
+						]
+					},..#t
+			}
+			a lista de mobs será sempre acumulativa, ou seja, exemplo:nivel 5,
+			então pegaremos:
+				listaMob.apped(mobs.get("01").mobs)
+				listaMob.apped(mobs.get("02").mobs)
+				listaMob.apped(mobs.get("03").mobs)
+				listaMob.apped(mobs.get("04").mobs)
+				listaMob.apped(mobs.get("05").mobs)
+			e esta seria nossa lista para o nivel 5
+			Quando pegar-mos um mob-elemnto da lista, se na estrutura dele existir
+			a flag "informar":true, iremos criar um icone na tela informando o seu
+			aparecimento
+
+			Quando chegamos no último nivel, deve aparecer uma imagem no centro do mapa
+			e iremos até ela e ficamso até iniciar o boss.
+			
+			Ao matar o boss, espalharemos todo o loot na tela e abriremos um portal,
+			mas add mais um ao mapa atual e gravamos ele
+	Existem tres formas de analisar a evolução do mapa:
+		subindo o nível
+		Subindo as waves
+		Meio termo
+		
+		subindo o nível, ao chegar a um nível X, o boss é ativo.
+			contra:
+				é possivel chegar ao boss mais fraco
+			pró:
+				O jogo é mais rápido
+		
+		Subindo as waves:
+			Contra:
+				fica mais lento
+				mais mobs para matar
+			pró:
+				existe a possibilidade de você chegar be forte pelos drops e up das skills
+		
+		Meio termo: Seria que, ao atingir 75% do máximo em waves, liberamos a ativação do boss -  vamos seguir esta ideia
+			contra:
+				fica ainda lento, mas não quanto apenas subir waves
+			pro:
+				Se vc se sentir capaz de vencer o boss, depois de 75% você poderá ir até o centro
+					ao inves de esperar ele ser ativado sozinho
+		
+		vamos fazer o meio-termo:
+		
+	
+Fix:
+	no player, ter um erro que não funcionou no godot 4.4, que o play_backwards não funciona corretamente.
+	Para ele funcionar, tive que inverter o ultimo parametro do true/false em player, do default para o não-default
+
+Observação:
+	Para sumir os itens na cidades, coloquei todos os objetos com um grupo especifico e
+	carrego eles para serem excluidos da pesauisa da camera até o player, então, desta forma, podemos
+	clicar em predios e o sistema desconsidera ele e considera a posicao do chao e assim
+	podemos andar atrás dos predios.
+	Observação. foi feito apenas para as cidades

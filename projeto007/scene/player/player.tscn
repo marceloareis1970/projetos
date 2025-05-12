@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://l3pg154rs86h"]
+
+[ext_resource type="Script" uid="uid://csfh5ifr661jp" path="res://scene/player/player.gd" id="1_v7pse"]
+[ext_resource type="Texture2D" uid="uid://cs6vt3n0q18pd" path="res://assets/images/direcional.png" id="2_cm2cf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6smn3"]
+transparency = 1
+albedo_texture = ExtResource("2_cm2cf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5lop3"]
+material = SubResource("StandardMaterial3D_6smn3")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v7pse"]
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+wall_min_slide_angle = 0.698132
+script = ExtResource("1_v7pse")
+
+[node name="player" type="Node3D" parent="."]
+
+[node name="espada" type="Marker3D" parent="player"]
+
+[node name="marca" type="Marker3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.29382)
+
+[node name="player" type="Marker3D" parent="player"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.882525, 0)
+
+[node name="braco_marcador" type="Node3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.31081)
+
+[node name="marcador" type="MeshInstance3D" parent="player/braco_marcador"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.73015, 0)
+mesh = SubResource("PlaneMesh_5lop3")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_v7pse")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
